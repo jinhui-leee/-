@@ -221,7 +221,42 @@ public int[] merge(int[] arr1, int[] arr2)
 
 3. 문자열 찾기(바늘 찾기) : O(N+M)
 ~~~Java
-
+public boolean findNeele(String needle, String haystack)
+    {
+    	int needleIndex = 0;
+    	int haystackIndex = 0;
+    	boolean foundNeedle = false;
+    	
+    	while(haystackIndex < haystack.length())
+    	{
+    		if (needle.charAt(needleIndex) == haystack.charAt(haystackIndex))
+    		{
+    			foundNeedle = true;
+    			int preHaystackIndex = haystackIndex;
+    			while(needleIndex < needle.length())
+    			{
+    				if (needle.charAt(needleIndex) != haystack.charAt(haystackIndex))
+    				{
+    					foundNeedle = false;
+    					haystackIndex = preHaystackIndex + 1;
+    					break;
+    				}
+    				
+    				needleIndex += 1;
+    				haystackIndex += 1;
+    			}
+    			
+    			if (foundNeedle)
+    			{
+    				return true;
+    			}
+    			needleIndex = 0;
+    		}
+    		
+    		haystackIndex += 1;
+    	}
+    	return false;
+    }
 ~~~
 
 4. 배열의 세 수를 곱해 가장 큰 값 찾기 : O(N^3)
