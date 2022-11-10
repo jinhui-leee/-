@@ -261,7 +261,48 @@ public boolean findNeele(String needle, String haystack)
 
 4. 배열의 세 수를 곱해 가장 큰 값 찾기 : O(N^3)
 ~~~Java
-
+public int largestProducts(int[] arr)
+    {
+    	if (arr.length == 1)
+    	{
+    		return arr[0];
+    	}
+    	if (arr.length == 2)
+    	{
+    		return arr[0]*arr[1];
+    	}
+    	
+    	int max = arr[0];
+    	
+    	for (int i=0; i<arr.length; i++)
+    	{
+    		if (max < arr[i])
+    		{
+    			max = arr[i];
+    		}
+    	}
+    	
+    	int secondMax = arr[0];
+    	
+    	for (int i=0; i<arr.length; i++)
+    	{
+    		if (secondMax < arr[i] && arr[i] < max)
+    		{
+    			secondMax = arr[i];
+    		}
+    	}
+    	
+    	int thirdMax = arr[0];
+    	
+    	for (int i=0; i<arr.length; i++)
+    	{
+    		if (thirdMax < arr[i] && arr[i] < secondMax)
+    		{
+    			thirdMax = arr[i];
+    		}
+    	}
+    	return max*secondMax*thirdMax;
+    }
 ~~~
 
 5. 랜덤으로 이력서 뽑기 : O(log N)
