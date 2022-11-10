@@ -152,11 +152,6 @@ public boolean isPalindrome(String str)
     }
 ~~~
 
-- 암호 크래커
-~~~Java
-
-~~~
-
 # 연습 문제
 1. 합이 100이 되는 배열 판단 : O(N)
 ~~~Java
@@ -307,5 +302,23 @@ public int largestProducts(int[] arr)
 
 5. 랜덤으로 이력서 뽑기 : O(log N)
 ~~~Java
-
+public String pickResume(String[] resumes)
+    {
+    	int frontResume = 0;
+    	int lastResume = resumes.length-1;
+    	int eliminate = 0;
+    	while(frontResume < lastResume)
+    	{
+    		if (eliminate%2 == 0)
+    		{
+    			frontResume = (frontResume + lastResume)/2;
+    		}
+    		else
+    		{
+    			lastResume = (frontResume + lastResume)/2;
+    		}
+    		eliminate += 1;
+    	}
+    	return resumes[frontResume];
+    }
 ~~~
